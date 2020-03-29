@@ -17,18 +17,18 @@ ui-strings:
 
 # Website header
 header:
- title:    "Démonstrateur de l'algorithme d'orientation COVID19"
+ title:    "Test del algoritmo de autoevaluación de COVID19"
  logo:     "https://solidarites-sante.gouv.fr/IMG/siteon0.jpg"
  color:    "is-primary"
- subtitle: "Ce site sert de documentation pour l'implémentation de l'algorithme d'orientation COVID19."
+ subtitle: "Este sitio tiene documentación para la implementación del algoritmo de orientación de COVID-19."
 
 # Website footer
 footer:
- text:    "Démonstration de l'algorithme d'orientation COVID-19."
- contact:  "mobilisation-covid@sante.gouv.fr"
+ text:    "Demostración del algortimo de orientación de COVID-19."
+ contact:  "reference_email_here@salud.gob.ar"
 
 # Allow users to send you emails with the summary?
-mail-to: "mobilisation-covid@sante.gouv.fr"
+mail-to: "reference_email_here@salud.gob.ar"
 
 # Display help along with questions by default?
 display-help: true
@@ -50,7 +50,7 @@ display-score-top-result: true
 conditional-navigation: false
 
 # Some text message to always display after the score results
-display-unconditionally: "Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert: 0 800 130 000."
+display-unconditionally: "Quédese en su casa el máximo tiempo posible hasta que los síntomas mejoren. Tome su temperatura dos a tres veces por día. Siga todas las medidas de higiene."
 
 # Set initial variables to register scores.  Each entry of
 # score-variables start with the name of the variable (you can pick
@@ -62,40 +62,40 @@ display-unconditionally: "Restez chez vous au maximum en attendant que les sympt
 #      the one with the highest score when the user is done.
 score-variables:
   moins-de-15-ans:
-    display: "Moins de 15 ans"
+    display: "Menos de 15 años"
     value: 0
   plus-de-50-ans:
-    display: "Plus de 49 ans"
+    display: "Más de 49 años"
     value: 0
   poids:
-    display: "Poids (kgs)"
+    display: "Peso (kgs)"
     value: 0
   taille:
-    display: "Taille (mètres)"
+    display: "Talla (mètres)"
     value: 0
   fievre:
-    display: "Fièvre"
+    display: "Fiebre"
     value: 0
   toux:
-    display: "Toux"
+    display: "Tos"
     value: 0
   anosmie:
-    display: "Trouble goût/odorat"
+    display: "Problemas con el gusto/olfato"
     value: 0
   douleurs:
-    display: "Douleurs"
+    display: "Dolor"
     value: 0
   diarrhees:
-    display: "Diarrhées"
+    display: "Diarrea"
     value: 0
   facteurs-gravite-mineurs:
-    display: "Facteurs de gravité mineurs"
+    display: "Factores de gravedad menores"
     value: 0
   facteurs-gravite-majeurs:
-    display: "Facteurs de gravité majeurs"
+    display: "Factores de gravedad mayores"
     value: 0
   facteurs-pronostiques:
-    display: "Facteurs pronostiques"
+    display: "Factores pronósticos"
     value: 0
 
 # Sync with pseudo-code.org:
@@ -121,21 +121,21 @@ conditional-score-outputs:
   FIN1:
     priority: 1
     node: "fin-moins-de-15-ans"
-    message: "Prenez contact avec votre médecin généraliste au moindre doute.<br/>Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.<br/>En cas d’urgence, appeler le [15](tel:15)."
+    message: "contacte a su médico tratante si tiene dudas. Esta aplicación no está adaptada para personas de menos de 15 años. En caso de urgencia llame al 15 [15](tel:15)."
     notification: "is-danger"
     condition-1:
       moins-de-15-ans: 1
   FIN5:
     priority: 2
     node: "fin"
-    message: "Appelez le [15](tel:15)."
+    message: "Llame al [15](tel:15)."
     notification: "is-danger"
     condition-1:
       fievre: 1
       facteurs-gravite-majeurs: 1
   FIN4:
     priority: 3
-    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>S'il n'est pas possible de joindre un médecin ou d'obtenir une téléconsultation, appelez le [15](tel:15)."
+    message: "Teleconsulta o médico general o visita domiciliaria (SOS).<br/>si no es posible llame al [15](tel:15)."
     notification: "is-danger"
     condition-1:
       facteurs-gravite-mineurs: 2
@@ -158,102 +158,7 @@ conditional-score-outputs:
   FIN3:
     priority: 4
     notification: "is-warning"
-    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>Appelez le [15](tel:15) si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire pendant plus de 24 heures apparaissent."
-    condition-1:
-      fievre: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 0
-    condition-2:
-      diarrhees: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 0
-    condition-3:
-      toux: 1
-      douleurs: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 0
-    condition-4:
-      toux: 1
-      anosmie: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 0
-    condition-5:
-      fievre: 1
-      facteurs-pronostiques: 0
-      facteurs-gravite-mineurs: 0
-      plus-de-50-ans: 1
-    condition-6:
-      diarrhees: 1
-      facteurs-pronostiques: 0
-      facteurs-gravite-mineurs: 0
-      plus-de-50-ans: 1
-    condition-7:
-      toux: 1
-      douleurs: 1
-      facteurs-pronostiques: 0
-      facteurs-gravite-mineurs: 0
-      plus-de-50-ans: 1
-    condition-8:
-      toux: 1
-      anosmie: 1
-      facteurs-pronostiques: 0
-      facteurs-gravite-mineurs: 0
-      plus-de-50-ans: 1
-    condition-9:
-      fievre: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 1
-    condition-10:
-      diarrhees: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 1
-    condition-11:
-      toux: 1
-      douleurs: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 1
-    condition-12:
-      toux: 1
-      anosmie: 1
-      facteurs-pronostiques: 1
-      facteurs-gravite-mineurs: 1
-  FIN6:
-    priority: 5
-    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins)."
-    notification: "is-warning"
-    condition-1:
-      fievre: 1
-      toux: 1
-  FIN2:
-    priority: 6
-    message: "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d'apparition de nouveaux symptômes.<br/>Vous pourrez aussi utiliser à nouveau l'application pour réévaluer vos symptômes."
-    notification: "is-warning"
-    condition-1:
-      fievre: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-pronostiques: 0
-      plus-de-50-ans: 0
-    condition-2:
-      diarrhees: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-pronostiques: 0
-      plus-de-50-ans: 0
-    condition-3:
-      toux: 1
-      douleurs: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-pronostiques: 0
-      plus-de-50-ans: 0
-    condition-4:
-      toux: 1
-      anosmie: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-pronostiques: 0
-      plus-de-50-ans: 0
-  FIN8:
-    priority: 7
-    notification: "is-warning"
-    message: "Votre situation ne relève probablement pas du Covid-19.<br/>Un avis médical est recommandé. Au moindre doute, appelez le [15](tel:15)."
+    message: "Teleconsulta o médico general o visita domiciliaria (SOS).<br/>Ante la menor duda, llame al [15](tel:15)."
     condition-1:
       toux: 1
       douleurs: 0
@@ -293,7 +198,7 @@ conditional-score-outputs:
   FIN7:
     priority: 8
     notification: "is-info"
-    message: "Votre situation ne relève probablement pas du Covid-19.<br/>Consultez votre médecin au moindre doute.<br/>Si de nouveaux symptomes apparaissent, refaites le test."
+    message: "Su situación no se debe probablemente a COVID-19. <br/>Consulte a su médico tratante si tiene alguna duda.<br/>Si nuevos síntomas aparecieran, rehaga este test."
     condition-1:
       toux: 1
       anosmie: 0
@@ -315,7 +220,7 @@ conditional-score-outputs:
   FIN9:
     priority: 9
     notification: "is-success"
-    message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute.<br/>Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation.<br/>Pour toute information concernant le Covid-19, composer le 0 800 130 000."
+    message: "Su situación no se debe probablemente a COVID-19. No dude en contactar a su médico tratante ante cualquier duda.<br/>Ud. puede hacer el test ante nuevos síntomas para reevaluar su situación.<br/>Para toda información concerniente a COVID-19, llame al 0 800 130 000."
     condition-1:
       toux: 0
       fievre: 0
@@ -326,30 +231,30 @@ conditional-score-outputs:
 # FIXME: complete documentation
 tree:
   - node:       "0"
-    text:       "COVID19: Algorithme d'orientation - site de démonstration"
+    text:       "COVID-19: Algoritmo de orientación - sitio de demostración"
     home-page:  true
     force-help: true
-    help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19.  Aucune donnée n'est collectée."
+    help:       "Este sitio es una demostración para el algoritmo de orientación de COVID-19. Ningún dato es recolectado"
     choices:
-    - answer: "Démarrer"
+    - answer: "Empezar"
       goto:   "1.1"
       color:  "is-info"
 
   - node:       "1.1"
     progress:   "[1 23]"
-    text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
+    text:       "Piensa Ud. haber tenido fiebre los últimos días (escalofríos, sudoración)?"
     start-page: true
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       score:
         fievre:
           value: 1
       goto:    "1.1.1"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       color:   "is-info"
       goto:    "1.2"
-    - answer:  "Je ne sais pas"
+    - answer:  "No sabe"
       color:   "is-info"
       goto:    "1.2"
       score:
@@ -358,24 +263,24 @@ tree:
 
   - node:       "1.1.1"
     progress:   "[2 23]"
-    text:       "Quelle est votre température ?"
+    text:       "Cuál es su temperatura?"
     choices:
-    - answer:  "**Inférieure** ou égale à 35,4°C"
+    - answer:  "**Inferior** o igual a 35,4°C"
       goto:    "1.2"
       color:   "is-info"
-    - answer:  "Entre 35,5 et 37,7°C"
+    - answer:  "Entre 35,5 y 37,7°C"
       goto:    "1.2"
       color:   "is-info"
-    - answer:  "Entre 37,8 et 38,9°C"
+    - answer:  "Entre 37,8 y 38,9°C"
       goto:    "1.2"
       color:   "is-info"
-    - answer:  "**Supérieure** ou égale à 39°C"
+    - answer:  "**Superior** o igual à 39°C"
       score:
         facteurs-gravite-mineurs:
           value: 1
       goto:    "1.2"
       color:   "is-info"
-    - answer:  "Je ne sais pas"
+    - answer:  "No se"
       score:
         facteurs-gravite-mineurs:
           value: 1
@@ -384,90 +289,90 @@ tree:
 
   - node:    "1.2"
     progress:   "[3 23]"
-    text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
+    text:    "Tiene Ud. tos o un aumento de su tos habitual los últimos días?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       score:
         toux:
           value: 1
       goto:    "1.3"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "1.3"
       color:   "is-info"
 
   - node:      "1.3"
     progress:   "[4 23]"
-    text:      "Avez-vous noté une forte diminution de votre goût ou de l'odorat ces derniers jours ?"
+    text:      "Tiene Ud. una fuerte disminución de su gusto o de su olfato los últimos días?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "1.4"
       color:   "is-info"
       score:
         anosmie:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "1.4"
       color:   "is-info"
 
   - node:    "1.4"
     progress:   "[5 23]"
-    text:    "Avez-vous un mal de gorge ou des douleurs musculaires<br/>ou des courbatures inhabituelles apparus ces derniers jours ?"
+    text:    "Tiene Ud. dolor de garganta que haya aparecido los últimos días?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       score:
         douleurs:
           value: 1
       goto:    "1.5"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "1.5"
       color:   "is-info"
 
   - node:    "1.5"
     progress:   "[6 23]"
-    text:    "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
+    text:    "Ha tenido Ud. diarrea las últimas 24 hs (al menos 3 deposiciones diarias)?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       score:
         diarrhees:
           value: 1
       goto:    "1.6"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "1.6"
       color:   "is-info"
 
   - node:    "1.6"
     progress:   "[7 23]"
-    text:    "Avez-vous une fatigue inhabituelle ces derniers jours ?"
+    text:    "Tiene Ud. más fatiga de la habitual estos días?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "1.6.1"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "1.7"
       color:   "is-info"
 
   - node:    "1.6.1"
     progress:   "[8 23]"
-    text:    "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
+    text:    "Esta fatiga lo obliga a estar en reposo la mayor parte del día?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       score:
         facteurs-gravite-mineurs:
           value: 1
       goto:    "1.7"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "1.7"
       color:   "is-info"
 
   - node:    "1.7"
     progress:   "[9 23]"
-    text:    "Êtes-vous dans l'impossibilité de vous alimenter ou boire DEPUIS 24 HEURES OU PLUS ?"
+    text:    " Ha estado Ud. imposibilitado de alimentarse o de beber las últimas 24 horas o más?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       score:
         facteurs-gravite-majeurs:
           value: 1
@@ -475,15 +380,15 @@ tree:
         conditional-score-outputs: true
         default: "1.8"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "1.8"
       color:   "is-info"
 
   - node:    "1.8"
     progress:   "[10 23]"
-    text:    "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL<br/>lorsque vous parlez ou faites un petit effort ?"
+    text:    "En las últimas 24 horas, ha notado Ud. falta de aire no habitual. En las últimas 24 horas, ha notado una falta de aliento INUSUAL al hablar o hacer esfuerzos leves?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       score:
         facteurs-gravite-majeurs:
           value: 1
@@ -491,15 +396,15 @@ tree:
         conditional-score-outputs: true
         default: "2.1"
       color:   "is-info"
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.1"
       color:   "is-info"
 
   - node:    "2.1"
     progress:   "[11 23]"
-    text:    "Quel est votre âge ?"
+    text:    "Cuál es su edad?"
     choices:
-    - answer:  "Moins de 15 ans"
+    - answer:  "Menos de 15 años"
       goto:
         conditional-score-outputs: true
         default: "2.2"
@@ -507,16 +412,16 @@ tree:
         moins-de-15-ans:
           value: 1
       color:   "is-info"
-    - answer:  "Entre 15 et 49 ans"
+    - answer:  "Entre 15 y 49 años"
       goto:    "2.2"
       color:   "is-info"
-    - answer:  "Entre 50 et 69 ans"
+    - answer:  "Entre 50 et 69 años"
       score:
         plus-de-50-ans:
           value: 1
       goto:    "2.2"
       color:   "is-info"
-    - answer:  "70 ans ou plus"
+    - answer:  "70 años o más"
       goto:    "2.2"
       color:   "is-info"
       score:
@@ -527,7 +432,7 @@ tree:
 
   - node:    "2.2"
     progress:   "[12 23]"
-    text:    "Quel est votre poids en kilogrammes ?"
+    text:    "Cuál es su peso en kilogramos?"
     help: "**Note aux développeurs:** demandez la saisie du poids exact."
     choices:
     - answer:  "<60"
@@ -569,7 +474,7 @@ tree:
 
   - node:    "2.3"
     progress:   "[13 23]"
-    text:    "Quelle est votre taille en mètres ?"
+    text:    "Cuál es su altura en metros?"
     help: "**Note aux développeurs:** demandez la saisie de la taille exacte."
     choices:
     - answer:  "<1m50"
@@ -611,18 +516,18 @@ tree:
 
   - node:    "2.4"
     progress:   "[14 23]"
-    text:    "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
+    text:    "Tiene Ud. hipertensión arterial descontrolada? Tiene Ud. una enfermedad cardíaca o vascular? Sigue Ud. algún tratamiento cardiológico??"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.5"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.5"
       color:   "is-info"
-    - answer:  "Je ne sais pas"
+    - answer:  "No se"
       goto:    "2.5"
       color:   "is-info"
       score:
@@ -631,131 +536,131 @@ tree:
 
   - node:    "2.5"
     progress:   "[15 23]"
-    text:    "Êtes-vous diabétique ?"
+    text:    "Es Ud. diabético?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.6"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.6"
       color:   "is-info"
 
   - node:    "2.6"
     progress:   "[16 23]"
-    text:    "Avez-vous ou avez-vous eu un cancer ?"
+    text:    "Tiene Ud. cancer?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.7"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.7"
       color:   "is-info"
 
   - node:    "2.7"
     progress:   "[17 23]"
-    text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
+    text:    "Tiene Ud. una enfermedad respiratoria? Está Ud. en seguimiento por un neumonólogo?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.8"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.8"
       color:   "is-info"
 
   - node:    "2.8"
     progress:   "[18 23]"
-    text:    "Avez-vous une insuffisance rénale chronique dialysée ?"
+    text:    "Tiene Ud. insuficiencia renal crónica que requiera diálisis?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.9"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.9"
       color:   "is-info"
 
   - node:    "2.9"
     progress:   "[19 23]"
-    text:    "Avez-vous une maladie chronique du foie ?"
+    text:    "Tiene Ud. alguna enfermedad crónica del hígado?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.10"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.10"
       color:   "is-info"
 
   - node:    "2.10"
     progress:   "[20 23]"
-    text:    "Êtes-vous enceinte ?"
+    text:    "Esta Ud. embarazada?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.11"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.11"
       color:   "is-info"
-    - answer:  "Non applicable"
+    - answer:  "No aplica"
       goto:    "2.12"
       color:   "is-info"
 
   - node:    "2.11"
     progress:   "[21 23]"
-    text:    "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
+    text:    "Tiene Ud. una enfermedad que disminuya sus defensas inmunológicas?"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "2.12"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "2.12"
       color:   "is-info"
-    - answer:  "Je ne sais pas"
+    - answer:  "No se"
       goto:    "2.12"
       color:   "is-info"
 
   - node:    "2.12"
     progress:   "[22 23]"
-    text:    "Prenez-vous un traitement immunosuppresseur ?"
-    help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
+    text:    "Sigue Ud. algún tratamiento inmunosupresor?"
+    help: "Sigue Ud. algún tratamiento que disminuya sus defensas? (ejemplo: corticoides, metotrexato, ciclosporina, tacrolimus, azatioprina, ciclofosfamida, entre otros)"
     choices:
-    - answer:  "Oui"
+    - answer:  "Si"
       goto:    "fin"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "No"
       goto:    "fin"
       color:   "is-info"
-    - answer:  "Je ne sais pas"
+    - answer:  "No se"
       goto:    "fin"
       color:   "is-info"
 
   - node: "fin-moins-de-15-ans"
-    text: "Vous avez moins de quinze ans."
+    text: "Ud. tiene menos de 15 años"
     done: true
 
   - node: "fin"
-    text: "Merci d'avoir utilisé l'algorithme d'orientation COVID-19"
-    help: "Cet algorithme est potentiellement modifiable après étude de cas et veille scientifique."
+    text: "Gracias por utilizar el algoritmo de orientación para COVID-19"
+    help: "Algoritmo potencialmente modificable luego de estudios de casos y vigilancia científica."
     done: true
