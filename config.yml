@@ -17,8 +17,8 @@ ui-strings:
 
 # Website header
 header:
- title:    "Test del algoritmo de autoevaluación de COVID19"
- logo:     "https://solidarites-sante.gouv.fr/IMG/siteon0.jpg"
+ title:    "Test del algoritmo de autoevaluación de COVID-19"
+ logo:     "https://assets.change.org/photos/8/yv/vj/cwYVVJHPucsSJDI-800x450-noPad.jpg?1536100710https://solidarites-sante.gouv.fr/IMG/siteon0.jpg"
  color:    "is-primary"
  subtitle: "Este sitio tiene documentación para la implementación del algoritmo de orientación de COVID-19."
 
